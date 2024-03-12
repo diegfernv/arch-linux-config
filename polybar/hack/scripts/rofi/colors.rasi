@@ -1,0 +1,10 @@
+/* colors */
+
+* {
+  bg-alt:     #3C3836;
+  bg:         #1E2021;
+  fg:         #F9F5D7;
+  ac:         #D3859B;
+  green:      #A8B665;
+  blue:       #7CAEA3;
+}
