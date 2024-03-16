@@ -117,7 +117,7 @@ super + q
 
 #powermenu
 super + x
-    ~/.config/polybar/hack/scripts/powermenu-type2.sh
+    ~/.config/polybar/rosemary/scripts/powermenu-type2.sh
 
 #Pavucontrol
 super + v
@@ -149,7 +149,7 @@ super + BackSpace
 
 #Change Layout
 super + Tab
-    ~/.config/polybar/hack/scripts/toggle_keyboard_layout.sh
+    ~/.config/polybar/rosemary/scripts/toggle_keyboard_layout.sh
 	
 #conky-rotate
 super + Next
@@ -165,7 +165,7 @@ super + Escape
 
 #Rofi app menu
 super + Return
-	rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/hack/scripts/rofi/launcher.rasi
+	rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/rosemary/scripts/rofi/launcher.rasi
 # Move floating window
 #super + {_,shift + }{Left,Down,Up,Right}
 #	~/.config/bspwm/scripts/move-window {_,edge-}{west,south,north,east}
@@ -285,9 +285,21 @@ super + XF86AudioRaiseVolume
 super + XF86AudioLowerVolume
     amixer -D pulse set Master 10%-
 
-#Mute
+#Audio Mute
 super + XF86AudioMute
     amixer -D pulse set Master 1+ toggle
+
+#Microphone Mute
+super + XF86AudioMicMute
+    amixer set Capture toggle
+
+#Monitor Brightness Up
+super + XF86MonBrightnessUp
+    brightnessctl set 25+
+
+#Monitor Brightness Down
+super + XF86MonBrightnessDown
+    brightnessctl set 25-
 
 #Playerctl works for Pragha, Spotify and others
 #Delete the line for playerctl if you want to use mpc

@@ -1,12 +1,19 @@
 !#/bin/bash
 declare -a paths=( 
-    "~/.config/bspwm" "./bspwm" 
-    "~/.config/autorandr" "./autorandr" 
-    "~/.config/polybar" "./polybar"
-    "~/.config/alacritty" "./alacritty"
-    "~/.config/nvim/" "./nvim"
-    "~/.themes" "./gtk-themes"
-    "~/Pictures/Wallpaper/" "./wallpaper"
+    ".config/bspwm/sxhkd/sxhkdrc" "bspwm/sxhkd/sxhkdrc" 
+    ".config/bspwm/system-overview" "bspwm/system-overview"
+    ".config/bspwm/scripts/monitor_connected.sh" "bspwm/scripts/monitor_connected.sh"
+    ".config/bspwm/picom.conf" "bspwm/picom.conf"
+    ".config/bspwm/autostart.sh" "bspwm/autostart.sh"
+    ".config/bspwm/bspwmrc" "bspwm/bspwmrc"
+    ".config/autorandr/." "autorandr/." 
+    ".config/polybar/rosemary/." "polybar/rosemary/."
+    ".config/alacritty/alacritty.toml" "alacritty/alacritty.toml"
+    ".config/nvim/init.vim" "nvim/init.vim"
+    ".themes/." "gtk-themes/."
+    "Pictures/Wallpaper/." "wallpaper/."
+    ".zshrc" "zsh/.zshrc"
+    ".config/neofetch/config.conf" "neofetch/config.conf"
 )
 # Anadir esto pero primero ver si puedo dejarlo en .local o algo
     #"/usr/share/sddm/themes/arcolinux-sugar-candy/"
@@ -23,62 +30,44 @@ read choice
 case $choice in
     "1")
         for ((i = 0; i < max_paths - 1; i+=2 )); do
-            source="${paths[$i]}"
-            destination="${paths[$i+1]}"
+            source=$HOME/"${paths[$i]}"
+            destination=./"${paths[$i+1]}"
             
             eval source="$source"
-            if [ -e "$source" ]; then
-                cp -r "$source" "$destination"
-                echo "Copied $source to $destination"
-            else
-                echo "Source path $source does not exist"
-            fi 
+            mkdir -p $(dirname $destination) && cp -r --update=all "$source" "$destination"
+            echo "Copied $(echo $source | sed "s/.*\///") to $(dirname $destination)"
         done
         break
         ;;
     "2")
-        echo "\
-Before using this script you need to get the following WM: BSPWM
-Furthermore you need to install thepackages:
-    - autorandr (Pacman)
-    - Neovim and Vim-plug (https://github.com/junegunn/vim-plug)
-    - Customizable GRUB Theme (https://github.com/mateosss/matter)
-    - Rofi (Pacman)
-    - picom (Pacman)
-    - xclip (Pacman)
-    - jetbrains-mono-ttf (Pacman)
-    - nerd-fonts-symbols (Pacman)
-    - conky (Pacman)
-    - com.github.wwmm.easyeffects (Flatpak)
-    - SDDM Arcolinux-sugar-candy
-
-    
-Do you have all pre-requirements installed? [Y/N]:
-        "
-        read requirements
-        case $requirements in
+        chmod 700 ./install_dependencies.sh
+        ./install_dependencies.sh
+        echo "Copy configuration files? [Y/N]"
+        read copy
+        case $copy in
             [Yy]* )
-                echo "You have selected Yes"
+                find ./{bspwm,polybar} -name "*.sh" -exec chmod 700 {} \;
                 for ((i = 0; i < max_paths - 1; i+=2 )); do
-                    source="${paths[$i+1]}"
-                    destination="${paths[$i]}"
+                    source=./"${paths[$i+1]}"
+                    destination=$HOME/"${paths[$i]}"
             
-                    eval source="$source"
-                    if [ -e "$source" ]; then
-                        cp -r "$source" "$destination"
-                        echo "Copied $source to $destination"
+                    eval destination="$destination"
+                    if [ -e "$destination" ]; then
+                        # Puedo crear y copiar en 1 liner sin embargo, no lo hare de momento...
+                        # mkdir -p $(dirname $destination) && cp -rv --update=all $source $destination"
+                        cp -r --update=all "$source" "$destination"
+                        echo "Copied $(echo $source | sed "s/.*\///") to $(dirname $destination)"
                     else
-                        echo "Source path $source does not exist"
+                        echo "Destination path $destination does not exist, skipping..."
                     fi 
                 done
                 break
                 ;;
-            [Nn]* ) 
-                echo "Please install the requirements"
-                exit
+            [Nn]* )
+                echo "Nothing more to do."
                 break
                 ;;
-            * ) echo "Do you have all pre-requirements installed [Y/N]:";;
+            * ) echo "Copy configuration files? [Y/N]"
         esac
         break
         ;;

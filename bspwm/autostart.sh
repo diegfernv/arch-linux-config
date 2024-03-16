@@ -16,7 +16,16 @@ function run {
 #xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
 #autorandr horizontal
 
-#autorandr -c &
+autorandr -c && 
+
+if [[ $HOSTNAME == rosemary-desktop ]]; then
+	bspc monitor DP-0 -d 1 2 3 4 5
+	bspc monitor DP-2 -d 6 7 8 9 10
+	bspc monitor HDMI-0 -d 11
+else 
+	bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+fi
+$HOME/.config/polybar/rosemary/launch.sh &
 
 #change your keyboard if you need it
 #setxkbmap -layout be
@@ -41,10 +50,9 @@ picom --config $HOME/.config/bspwm/picom.conf &
 
 xsetroot -cursor_name left_ptr &
 
-$HOME/.config/polybar/hack/launch.sh &
 
 nohup flatpak run com.github.wwmm.easyeffects --gapplication-service &
-killall -q conky && conky -c $HOME/.config/bspwm/system-overview &
+killall -q conky; conky -c $HOME/.config/bspwm/system-overview &
 dex $HOME/.config/autostart/arcolinux-welcome-app.desktop
 run nm-applet &
 run pamac-tray &
