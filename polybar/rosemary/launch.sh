@@ -18,5 +18,5 @@ if [[ $HOSTNAME == rosemary-desktop ]]; then
     polybar -q bottom-2 -c "$DIR"/config.ini &
 else
     polybar -q default-top -c "$DIR"/config.ini &
-    polybar -q deafult-bottom -c "$DIR"/config.ini &
+    polybar -q default-bottom -c "$DIR"/config.ini &
 fi

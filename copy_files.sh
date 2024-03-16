@@ -37,7 +37,6 @@ case $choice in
             mkdir -p $(dirname $destination) && cp -r --update=all "$source" "$destination"
             echo "Copied $(echo $source | sed "s/.*\///") to $(dirname $destination)"
         done
-        break
         ;;
     "2")
         chmod 700 ./install_dependencies.sh
@@ -52,24 +51,15 @@ case $choice in
                     destination=$HOME/"${paths[$i]}"
             
                     eval destination="$destination"
-                    if [ -e "$destination" ]; then
-                        # Puedo crear y copiar en 1 liner sin embargo, no lo hare de momento...
-                        # mkdir -p $(dirname $destination) && cp -rv --update=all $source $destination"
-                        cp -r --update=all "$source" "$destination"
+			mkdir -p $(dirname $destination) && cp -r --update=all "$source" "$destination"
                         echo "Copied $(echo $source | sed "s/.*\///") to $(dirname $destination)"
-                    else
-                        echo "Destination path $destination does not exist, skipping..."
-                    fi 
                 done
-                break
                 ;;
             [Nn]* )
                 echo "Nothing more to do."
-                break
                 ;;
-            * ) echo "Copy configuration files? [Y/N]"
+            * ) echo "Copy configuration files? [Y/N]" ;;
         esac
-        break
         ;;
     *) echo "Invalid option";;
 esac
