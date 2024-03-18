@@ -29,39 +29,61 @@ Furthermore you need to install the following packages:
     
 Do you want to install pre-requirements? [Y/N]:
         "
-        read requirements
-        case $requirements in
-            [Yy]* )
-                echo "Installing Pacman packages"
-                sudo pacman -S --needed autorandr brave-bin brightnessctl neovim rofi picom \
-                    xclip ttf-jetbrains-mono ttf-nerd-fonts-symbols conky-lua-archers \
-                    flatpak numix-icon-theme-git oh-my-zsh-git zsh-autosuggestions-git \
-                    zsh-syntax-highlighting zsh-history-substring-search-git
-                echo "Activating ZSH"
-                sudo chsh -s /bin/zsh $(whoami)
-                echo "Installing Neovim Plugins"
-                if [ ! -d "$HOME/.local/share/nvim/site/autoload" ] 
-                then
-                sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-                fi
-                if [ ! -d "$HOME/Documents/GRUB-matter" ] 
-                then
-                    git clone https://github.com/mateosss/matter $HOME/Documents/GRUB-matter/
-		fi
-                    #TODO Colores leidos de archivo
-		    echo "The following grub entries are available"
-		    sudo ~/Documents/GRUB-matter/matter.py -l
-		    echo "Type the icons you want to use separated byspace (for example: arch arch _ _ _ _ _ _ microsoft-windows cog restart power):"
-		    read icons
+read requirements
+case $requirements in
+    [Yy]* )
+        echo "Installing Pacman packages"
+        sudo pacman -S --needed arcolinux-sddm-sugar-candy-git autorandr brave-bin \
+            brightnessctl neovim rofi picom xclip ttf-jetbrains-mono \
+            ttf-nerd-fonts-symbols conky-lua-archers \
+            flatpak numix-icon-theme-git oh-my-zsh-git zsh-autosuggestions-git \
+            zsh-syntax-highlighting zsh-history-substring-search-git
+        if [ -n "$ZSH_VERSION" ]; then
+            echo "Current shell is ZSH, skipping activation..."
+        else
+            echo "Activating ZSH"
+            sudo chsh -s /bin/zsh $(whoami)
+        fi
+        ;;
+    [Nn]* ) 
+        echo "Make sure to install the requirements"
+        ;;
+    * ) echo "Do you want to install pre-requirements? [Y/N]:" ;;
+esac
 
-                    sudo ~/Documents/GRUB-matter/matter.py \
-			    -i $icons \
-			    -fg F9F5D7 -hl 3C3836 -bg 1E2021 -ic D3859B -fs 24
-                ;;
-            [Nn]* ) 
-                echo "Make sure to install the requirements"
-                ;;
-            * ) echo "Do you have all pre-requirements installed [Y/N]:" ;;
-        esac
+echo "Do you want to install Neovim Plugins? [Y/N]:"
+read nvim_plug
+case $nvim_plug in
+    [Yy]* )
+        echo "Installing Neovim Plugins"
+        if [ ! -d "$HOME/.local/share/nvim/site/autoload" ]; then
+            sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+        fi
+        ;;
+    [Nn]* )
+        echo "Nothing more to do."
+        ;;
+    * ) echo "Do you want to install Neovim Plugins? [Y/N]:" ;;
+esac
 
-
+echo "Do you want to configure GRUB? [Y/N]:"
+read grub
+case $grub in
+    [Yy]* )
+        if [ ! -d "$HOME/Documents/GRUB-matter" ]; then 
+            git clone https://github.com/mateosss/matter $HOME/Documents/GRUB-matter/
+        fi
+        #TODO Colores leidos de archivo
+	    echo "The following grub entries are available"
+	    sudo ~/Documents/GRUB-matter/matter.py -l
+	    echo "Type the icons you want to use separated byspace (for example: arch arch _ _ _ _ _ _ microsoft-windows cog restart power):"
+	    read icons
+        sudo ~/Documents/GRUB-matter/matter.py \
+		    -i $icons \
+		    -fg F9F5D7 -hl 3C3836 -bg 1E2021 -ic D3859B -fs 24
+        ;;
+    [Nn]* )
+        echo "Nothing more to do."
+        ;;
+    * ) echo "Do you want to configure GRUB? [Y/N]:" ;;
+esac

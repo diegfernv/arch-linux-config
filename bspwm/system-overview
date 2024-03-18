@@ -105,7 +105,7 @@ ${color1}${hr}${color}
 ${color1}[S]+Enter${alignr}${color2}DMenu${color}
 ${color1}[S]+[Shift]${alignr}${color2}Fancy Menu${color}
 ${color1}${hr}${color}
-${color1}[Ctrl]+[Alt]+Arrows${alignr}${color2}Navigate Tiles${color}
+${color1}[S]+Arrows${alignr}${color2}Navigate Tiles${color}
 ${color1}[S]+[Shift]+Arrows${alignr}${color2}Move tile to screen${color}
 ${color1}[S]+[1-9]${alignr}${color2}Navigate workspaces${color}
 #${color1}[S]+[Shift]+[1-9]${alignr}${color2}Move to workspace${color}

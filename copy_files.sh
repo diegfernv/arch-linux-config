@@ -14,6 +14,8 @@ declare -a paths=(
     "Pictures/Wallpaper/." "wallpaper/."
     ".zshrc" "zsh/.zshrc"
     ".config/neofetch/config.conf" "neofetch/config.conf"
+    "../../usr/share/sddm/themes/arcolinux-sugar-candy/theme.conf.user" "arcolinux-sugar-candy/theme.conf.user"
+    ".icons/rosemary-pink/." "icons/."
 )
 # Anadir esto pero primero ver si puedo dejarlo en .local o algo
     #"/usr/share/sddm/themes/arcolinux-sugar-candy/"

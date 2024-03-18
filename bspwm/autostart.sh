@@ -40,7 +40,7 @@ else
 fi
 
 #Some ways to set your wallpaper besides variety or nitrogen
-feh --bg-scale ~/Pictures/Wallpaper/wall.png &
+feh --bg-scale ~/Pictures/Wallpaper/candy-09.jpg &
 #feh --bg-fill /usr/share/backgrounds/archlinux/arch-wallpaper.jpg &
 #wallpaper for other Arch based systems
 #feh --bg-fill /usr/share/archlinux-tweak-tool/data/wallpaper/wallpaper.png &

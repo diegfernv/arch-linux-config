@@ -171,7 +171,7 @@ super + Return
 #	~/.config/bspwm/scripts/move-window {_,edge-}{west,south,north,east}
 
 #Focus Move
-ctrl + alt + {Left,Right,Up,Down}
+super + {Left,Right,Up,Down}
     bspc node --focus {west,east,north,south}
 
 #Focus selected desktop FOR QWERTY KEYBOARDS
