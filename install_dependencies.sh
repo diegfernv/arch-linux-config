@@ -10,6 +10,7 @@ Furthermore you need to install the following packages:
     - autorandr (Pacman)
     - brave-bin (Pacman)
     - brightnessctl (Pacman)
+    - ctags (Pacman)
     - Neovim and Vim-plug (https://github.com/junegunn/vim-plug)
     - Customizable GRUB Theme (https://github.com/mateosss/matter)
     - Rofi (Pacman)
@@ -34,7 +35,7 @@ case $requirements in
     [Yy]* )
         echo "Installing Pacman packages"
         sudo pacman -S --needed arcolinux-sddm-sugar-candy-git autorandr brave-bin \
-            brightnessctl neovim rofi picom xclip ttf-jetbrains-mono \
+            brightnessctl ctags neovim rofi picom xclip ttf-jetbrains-mono \
             ttf-nerd-fonts-symbols conky-lua-archers \
             flatpak numix-icon-theme-git oh-my-zsh-git zsh-autosuggestions-git \
             zsh-syntax-highlighting zsh-history-substring-search-git
@@ -61,7 +62,17 @@ case $nvim_plug in
         fi
         ;;
     [Nn]* )
-        echo "Nothing more to do."
+        #TODO Hacer lo de abajo y hacerlo despues de copiar lol
+        # nvim --headless +PlugInstall +qa
+        #You need add +q to the end in order to kill the process when done. You can run all commands this way (by prepending a plus sign to each).
+        echo "\
+Remember to run the following in neovim:
+        :PlugInstall
+        :CocInstall coc-clangd
+        :CocInstall coc-json coc-tsserver
+        :CocInstall coc-pyright
+Nothing more to do.
+        "
         ;;
     * ) echo "Do you want to install Neovim Plugins? [Y/N]:" ;;
 esac

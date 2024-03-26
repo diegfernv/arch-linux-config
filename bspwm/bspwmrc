@@ -60,6 +60,7 @@ bspc rule -a inkscape state=fullscreen
 bspc rule -a Vlc state=fullscreen
 bspc rule -a VirtualBox Manager state=fullscreen
 bspc rule -a VirtualBox Machine state=fullscreen
+bspc rule -a ffxiv_dx11 state=fullscreen
 #bspc rule -a Gimp state=fullscreen
 
 #Floating applications
@@ -82,6 +83,7 @@ bspc rule -a Pavucontrol state=floating sticky=on
 #bspc rule -a Xfce4-appfinder state=floating sticky=on
 bspc rule -a Xfce4-terminal state=floating
 bspc rule -a steam state=floating
+bspc rule -a XIVLauncher.Core state=floating
 
 #Tiled applications
 bspc rule -a Gnome-disks state=tiled
@@ -107,7 +109,8 @@ bspc rule -a Spotify desktop='^10' follow=on
 bspc rule -a Brave-browser desktop='^7'
 bspc rule -a vesktop desktop='^6'
 bspc rule -a Krita desktop='^11' follow=off
-#bspc rule -a XIVLauncher desktop='1'
+bspc rule -a XIVLauncher.Core desktop='^1'
+bspc rule -a ffxiv_dx11.exe desktop='^1'
 
 #Spotify fix  --move desktop 10
 #sleep 1

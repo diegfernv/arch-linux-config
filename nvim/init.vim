@@ -1,7 +1,6 @@
 :set number
 :set relativenumber
 :set mouse=a
-:set encoding=utf-8
 :set scrolloff=8
 
 :syntax enable
@@ -14,7 +13,18 @@
 :set smarttab
 :set fileformat=unix
 
-let mapleader = ' '
+" Coc basics
+" May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
+" utf-8 byte sequence
+:set encoding=utf-8
+" Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
+" delays and poor user experience
+:set updatetime=300
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved
+:set signcolumn=yes
+
+" let mapleader = ' '
 
 call plug#begin()
     Plug 'tpope/vim-surround' " Surrounding ysw
@@ -30,14 +40,25 @@ call plug#begin()
     Plug 'lukas-reineke/indent-blankline.nvim' " Indent line
     Plug 'ur4ltz/surround.nvim' " () {} etc.
     Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+    Plug 'edluffy/hologram.nvim' " Show Images
 call plug#end()
 
+colorscheme gruvbox
+lua require("nvim-autopairs").setup()
+
 nmap <F8> :TagbarToggle<CR>
+nmap <C-L> <Leader>
 
 nmap <C-s> :w<CR>
 nmap <C-q> :q<CR>
+nmap <C-w> :bd<CR>
+nmap <C-Left> :bp<CR>
+nmap <C-Right> :bn<CR>
+nmap <C-t> :NERDTreeToggle<CR>
+nmap <C-r> :NERDTreeFind<CR>
 
 " ================= Auto completion ======================
+" https://github.com/neoclide/coc.nvin
 
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
@@ -45,33 +66,13 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice.
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+inoremap <silent><expr> <S-TAB> coc#refresh()
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call ShowDocumentation()<CR>
@@ -86,9 +87,6 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
@@ -138,8 +136,8 @@ endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
+" nmap <silent> <C-s> <Plug>(coc-range-select)
+" xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocActionAsync('format')
@@ -175,33 +173,31 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " =========================================================
 
+" autocmd VimEnter * NERDTreeFind | wincmd p
+
 let NERDTreeQuitOnOpen=1
 let g:NERDTreeMinimalUI=0
-nmap <C-t> :NERDTreeToggle<CR>
-nmap <C-r> :NERDTreeFind<CR>
-
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensiones#tabline#fnamemode=':t'
-nmap <leader>1 :bp<CR>
-nmap <leader>2 :bn<CR>
-nmap <C-w> :bd<CR>
-colorscheme gruvbox
+let g:NERDTreeFileLines = 1
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="~"
 
 if(has("termguicolors"))
     set termguicolors
 endif
-
-lua require 'colorizer'.setup()
-
-let g:NERDTreeDirArrowExpandable="+"
-let g:NERDTreeDirArrowCollapsible="~"
 
 let g:airline_theme='deus'
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensiones#tabline#fnamemode=':t'
 
 " Terminal
+" =========================================================
 lua require 'toggleterm'.setup()
 nmap <C-y> :ToggleTerm size=10 direction=horizontal<CR> 
+
+" =========================================================
+lua require 'colorizer'.setup()
+lua require('init')
