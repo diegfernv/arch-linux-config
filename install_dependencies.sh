@@ -60,9 +60,9 @@ case $nvim_plug in
         if [ ! -d "$HOME/.local/share/nvim/site/autoload" ]; then
             sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
         fi
-        nvim --headless +PlugInstall \
-            +"CocInstall coc-clangd coc-json coc-tsserver coc-pyright" \
-            +qa
+        nvim --headless -c "PlugInstall" \
+            -c "CocInstall coc-clangd coc-json coc-tsserver coc-pyright" \
+            -c "qa"
         #You need add +q to the end in order to kill the process when done. You can run all commands this way (by prepending a plus sign to each).
         ;;
     [Nn]* )

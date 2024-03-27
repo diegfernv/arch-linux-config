@@ -15,6 +15,7 @@ declare -a paths=(
     ".zshrc" "zsh/.zshrc"
     ".config/neofetch/config.conf" "neofetch/config.conf"
     "../../usr/share/sddm/themes/arcolinux-sugar-candy/theme.conf.user" "arcolinux-sugar-candy/theme.conf.user"
+    "../../etc/sddm.conf.d/kde_settings.conf" "arcolinux-sugar-candy/kde_settings.conf"
     ".icons/rosemary-pink/." "icons/."
     ".config/coc/." "coc/."
 )
@@ -23,6 +24,12 @@ declare -a paths=(
 scriptDir="$(pwd)/"
 
 max_paths=${#paths[@]}
+
+# Check if the script is run as root
+if [ "$EUID" -eq 0 ]; then
+    echo "This script cannot be run with root privileges."
+    exit 1
+fi
 
 echo "\
 This script is a 2 way copy, it's functions are:
@@ -37,7 +44,7 @@ case $choice in
             destination=./"${paths[$i+1]}"
             
             eval source="$source"
-            mkdir -p $(dirname $destination) && cp -r --update=all "$source" "$destination"
+            sudo mkdir -p $(dirname $destination) && sudo cp -r --update=all "$source" "$destination"
             echo "Copied $(echo $source | sed "s/.*\///") to $(dirname $destination)"
         done
         ;;
