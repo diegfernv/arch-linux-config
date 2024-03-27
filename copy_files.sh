@@ -9,7 +9,7 @@ declare -a paths=(
     ".config/autorandr/." "autorandr/." 
     ".config/polybar/rosemary/." "polybar/rosemary/."
     ".config/alacritty/alacritty.toml" "alacritty/alacritty.toml"
-    ".config/nvim/init.vim" "nvim/init.vim"
+    ".config/nvim/." "nvim/."
     ".themes/." "gtk-themes/."
     "Pictures/Wallpaper/." "wallpaper/."
     ".zshrc" "zsh/.zshrc"

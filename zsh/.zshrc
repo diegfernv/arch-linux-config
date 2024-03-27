@@ -527,7 +527,7 @@ alias edit-bspwmrc="nvim ~/.config/bspwm/bspwmrc"
 alias edit-polybar-colors="nvim ~/.config/polybar/rosemary/colors.ini"
 alias edit-polybar-conf="nvim ~/.config/polybar/rosemary/config.ini"
 
-alias run-stable-diffusion="~/Documents/PythonProjects/Stable\ Diffusion\ WebUI/ && conda activate sd-env && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/diego/miniconda3/envs/sd-env/lib/ && ./webui.sh --disable-safe-unpickle"
+alias run-stable-diffusion="~/Documents/PythonProjects/Stable\ Diffusion\ WebUI/ && conda activate sd-env && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/diego/miniconda3/envs/sd-env/lib/ && udisksctl mount -b /dev/sda2 && ./webui.sh --disable-safe-unpickle"
 
 # reporting tools - install when not installed
 neofetch

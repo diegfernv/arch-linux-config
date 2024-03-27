@@ -12,6 +12,7 @@
 :set autoindent
 :set smarttab
 :set fileformat=unix
+:set hlsearch
 
 " Coc basics
 " May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
@@ -24,7 +25,7 @@
 " diagnostics appear/become resolved
 :set signcolumn=yes
 
-" let mapleader = ' '
+let mapleader = ';'
 
 call plug#begin()
     Plug 'tpope/vim-surround' " Surrounding ysw
@@ -41,23 +42,35 @@ call plug#begin()
     Plug 'ur4ltz/surround.nvim' " () {} etc.
     Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
     Plug 'edluffy/hologram.nvim' " Show Images
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
 call plug#end()
 
 colorscheme gruvbox
 lua require("nvim-autopairs").setup()
 
-nmap <F8> :TagbarToggle<CR>
-nmap <C-L> <Leader>
+au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=150}
 
+" Disable recording
+map q <Nop>
+nnoremap j k
+nnoremap k j
+nnoremap <C-l> w
+nnoremap <C-h> b
+
+nmap <F8> :TagbarToggle<CR>
 nmap <C-s> :w<CR>
 nmap <C-q> :q<CR>
+nmap <C-i> :call ShowDocumentation()<CR>
 nmap <C-w> :bd<CR>
-nmap <C-Left> :bp<CR>
-nmap <C-Right> :bn<CR>
+nmap <C-b> :bp<CR>
+nmap <C-n> :bn<CR>
 nmap <C-t> :NERDTreeToggle<CR>
 nmap <C-r> :NERDTreeFind<CR>
+nmap <C-j> 10j
+nmap <C-k> 10k
 
-" ================= Auto completion ======================
+" ================= Auto completion ======================
 " https://github.com/neoclide/coc.nvin
 
 inoremap <silent><expr> <TAB>
@@ -96,7 +109,7 @@ augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
+  " Update signature help on iump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
@@ -123,16 +136,6 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
-
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
@@ -192,6 +195,13 @@ let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensiones#tabline#fnamemode=':t'
+
+" Telescope
+" =========================================================
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Terminal
 " =========================================================

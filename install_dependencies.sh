@@ -60,19 +60,13 @@ case $nvim_plug in
         if [ ! -d "$HOME/.local/share/nvim/site/autoload" ]; then
             sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
         fi
+        nvim --headless +PlugInstall \
+            +"CocInstall coc-clangd coc-json coc-tsserver coc-pyright" \
+            +qa
+        #You need add +q to the end in order to kill the process when done. You can run all commands this way (by prepending a plus sign to each).
         ;;
     [Nn]* )
-        #TODO Hacer lo de abajo y hacerlo despues de copiar lol
-        # nvim --headless +PlugInstall +qa
-        #You need add +q to the end in order to kill the process when done. You can run all commands this way (by prepending a plus sign to each).
-        echo "\
-Remember to run the following in neovim:
-        :PlugInstall
-        :CocInstall coc-clangd
-        :CocInstall coc-json coc-tsserver
-        :CocInstall coc-pyright
-Nothing more to do.
-        "
+        echo "Nothing more to do."
         ;;
     * ) echo "Do you want to install Neovim Plugins? [Y/N]:" ;;
 esac
