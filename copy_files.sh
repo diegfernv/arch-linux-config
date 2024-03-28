@@ -14,7 +14,7 @@ declare -a paths=(
     "Pictures/Wallpaper/." "wallpaper/."
     ".zshrc" "zsh/.zshrc"
     ".config/neofetch/config.conf" "neofetch/config.conf"
-    "../../usr/share/sddm/themes/arcolinux-sugar-candy/theme.conf.user" "arcolinux-sugar-candy/theme.conf.user"
+    "../../usr/share/sddm/themes/arcolinux-sugar-candy/theme.conf" "arcolinux-sugar-candy/theme.conf"
     "../../etc/sddm.conf.d/kde_settings.conf" "arcolinux-sugar-candy/kde_settings.conf"
     ".icons/rosemary-pink/." "icons/."
     ".config/coc/." "coc/."
