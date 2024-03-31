@@ -56,7 +56,7 @@ case $choice in
         read copy
         case $copy in
             [Yy]* )
-                find ./{bspwm,polybar} -name "*.sh" -exec chmod 700 {} \;
+                find ./{bspwm,polybar} -name "*.sh" -exec chmod 755 {} \;
                 for ((i = 0; i < max_paths - 1; i+=2 )); do
                     source=./"${paths[$i+1]}"
                     destination=$HOME/"${paths[$i]}"
