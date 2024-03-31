@@ -84,6 +84,7 @@ bspc rule -a Pavucontrol state=floating sticky=on
 bspc rule -a Xfce4-terminal state=floating
 bspc rule -a steam state=floating
 bspc rule -a XIVLauncher.Core state=floating
+bspc rule -a Msgcompose state=floating
 
 #Tiled applications
 bspc rule -a Gnome-disks state=tiled

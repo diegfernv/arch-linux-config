@@ -6,15 +6,16 @@ declare -a paths=(
     ".config/bspwm/picom.conf" "bspwm/picom.conf"
     ".config/bspwm/autostart.sh" "bspwm/autostart.sh"
     ".config/bspwm/bspwmrc" "bspwm/bspwmrc"
+    ".config/bspwm/wallpaper/." "bspwm/wallpaper/."
     ".config/autorandr/." "autorandr/." 
     ".config/polybar/rosemary/." "polybar/rosemary/."
     ".config/alacritty/alacritty.toml" "alacritty/alacritty.toml"
     ".config/nvim/." "nvim/."
     ".themes/." "gtk-themes/."
-    "Pictures/Wallpaper/." "wallpaper/."
     ".zshrc" "zsh/.zshrc"
     ".config/neofetch/config.conf" "neofetch/config.conf"
     "../../usr/share/sddm/themes/arcolinux-sugar-candy/theme.conf" "arcolinux-sugar-candy/theme.conf"
+    "../../usr/share/sddm/themes/arcolinux-sugar-candy/images/background08.jpg" "arcolinux-sugar-candy/background08.jpg"
     "../../etc/sddm.conf.d/kde_settings.conf" "arcolinux-sugar-candy/kde_settings.conf"
     ".icons/rosemary-pink/." "icons/."
     ".config/coc/." "coc/."
@@ -61,7 +62,7 @@ case $choice in
                     destination=$HOME/"${paths[$i]}"
             
                     eval destination="$destination"
-			mkdir -p $(dirname $destination) && cp -r --update=all "$source" "$destination"
+			        sudo mkdir -p $(dirname $destination) && sudo cp -r --update=all "$source" "$destination"
                         echo "Copied $(echo $source | sed "s/.*\///") to $(dirname $destination)"
                 done
                 ;;
@@ -69,6 +70,18 @@ case $choice in
                 echo "Nothing more to do."
                 ;;
             * ) echo "Copy configuration files? [Y/N]" ;;
+        esac
+        echo "Run Neovim configuration? [Y/N]:"
+        read config
+        case $config in
+            [Yy]* )
+                nvim --headless -c "PlugInstall" -c "qa"
+                nvim --headless -c "CocInstall coc-clangd coc-json coc-tsserver coc-pyright" -c "qa"
+                ;;
+            [Nn]* )
+                echo "Nothing More to do."
+                ;;
+            * ) echo "Run Neovim configuration? [Y/N]:" ;;
         esac
         ;;
     *) echo "Invalid option";;

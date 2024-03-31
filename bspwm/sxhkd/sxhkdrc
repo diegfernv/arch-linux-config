@@ -192,7 +192,8 @@ super + shift + p
 
 #reload sxhkd
 super + shift + s
-	pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd
+    #pkill -x sxhkd; sxhkd -c ~/.config/bspwm/sxhkd/sxhkdrc
 
 #Reload bspwm
 super + shift + r
@@ -212,7 +213,7 @@ super + shift + Return
 
 # Flip layout vertically/horizontally
 super + {_,shift + }a
-	bspc node @/ --flip {vertical,horizontal}
+bspc node @/ --flip {vertical,horizontal}
 
 # Move focused window to other monitor
 super + shift + Left
