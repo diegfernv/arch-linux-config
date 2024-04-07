@@ -27,7 +27,6 @@ scriptDir="$(pwd)/"
 max_paths=${#paths[@]}
 
 
-
 # Check if the script is run as root
 if [ "$EUID" -eq 0 ]; then
     echo "This script cannot be run with root privileges."
