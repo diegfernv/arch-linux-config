@@ -26,6 +26,8 @@ scriptDir="$(pwd)/"
 
 max_paths=${#paths[@]}
 
+
+
 # Check if the script is run as root
 if [ "$EUID" -eq 0 ]; then
     echo "This script cannot be run with root privileges."
@@ -60,7 +62,6 @@ case $choice in
                 for ((i = 0; i < max_paths - 1; i+=2 )); do
                     source=./"${paths[$i+1]}"
                     destination=$HOME/"${paths[$i]}"
-            
                     eval destination="$destination"
 			        sudo mkdir -p $(dirname $destination) && sudo cp -r --update=all "$source" "$destination"
                         echo "Copied $(echo $source | sed "s/.*\///") to $(dirname $destination)"

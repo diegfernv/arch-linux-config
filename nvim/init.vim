@@ -43,7 +43,10 @@ call plug#begin()
     Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
     Plug 'edluffy/hologram.nvim' " Show Images
     Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-treesitter/nvim-treesitter-context' " Show Function always
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
+    Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
 colorscheme gruvbox
@@ -174,15 +177,25 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+" NERDTree Config
 " =========================================================
 
 " autocmd VimEnter * NERDTreeFind | wincmd p
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if winnr() == winnr('h') && bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 let NERDTreeQuitOnOpen=1
 let g:NERDTreeMinimalUI=0
 let g:NERDTreeFileLines = 1
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
+" =========================================================
+
 
 if(has("termguicolors"))
     set termguicolors
@@ -211,3 +224,4 @@ nmap <C-y> :ToggleTerm size=10 direction=horizontal<CR>
 " =========================================================
 lua require 'colorizer'.setup()
 lua require('init')
+
