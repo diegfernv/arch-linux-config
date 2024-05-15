@@ -7,4 +7,7 @@
   ac:         #D3859B;
   green:      #A8B665;
   blue:       #7CAEA3;
+  cyan:       #93E0E3;
+  red:        #EA6962;
+  yellow:     #D8A656;
 }

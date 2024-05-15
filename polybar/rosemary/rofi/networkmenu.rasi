@@ -6,9 +6,11 @@
  * Twitter : @adi1090x
  *
  */
+@import                             "shared/colors.rasi"
+@import                             "shared/fonts.rasi"
 
 configuration {
-	font:							"Iosevka Nerd Font 10";
+	font:							@font;
     show-icons:                     true;
 	icon-theme: 					"Papirus";
     display-drun: 					"";
@@ -19,7 +21,6 @@ configuration {
 	sidebar-mode: 					false;
 }
 
-@import "colors.rasi"
 
 window {
     transparency:                   "real";
@@ -28,7 +29,7 @@ window {
 	border:							2px;
 	border-color:					@ac;
     border-radius:                  0px;
-	width:							300px;
+	width:							400px;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
@@ -48,7 +49,7 @@ textbox-prompt-colon {
 	background-color: 				@al;
 	text-color: 					@ac;
 	expand: false;
-	str: "";
+	str: "直";
 }
 
 entry {
@@ -78,7 +79,7 @@ listview {
     background-color:               @al;
     padding:                        0px;
     columns:                        1;
-    lines:                          5;
+    lines:                          8;
     spacing:                        5px;
     cycle:                          true;
     dynamic:                        true;
@@ -100,7 +101,7 @@ element {
     text-color:                     @fg;
     orientation:                    horizontal;
     border-radius:                  0px;
-    padding:                        8px 8px 8px -16px;
+    padding:                        8px 8px 8px -10px;
 }
 
 element-icon {

@@ -35,9 +35,9 @@ case $requirements in
     [Yy]* )
         echo "Installing Pacman packages"
         sudo pacman -S --needed arcolinux-sddm-sugar-candy-git autorandr brave-bin \
-            brightnessctl ctags neovim rofi picom xclip ttf-jetbrains-mono \
+            brightnessctl ctags dunst fzf neovim rofi picom xclip ttf-jetbrains-mono \
             ttf-nerd-fonts-symbols conky-lua-archers \
-            flatpak numix-icon-theme-git oh-my-zsh-git zsh-autosuggestions-git \
+            flatpak numix-icon-theme-git maim oh-my-zsh-git slop viewnior xcolor zsh-autosuggestions-git \
             zsh-syntax-highlighting zsh-history-substring-search-git
         if [ -n "$ZSH_VERSION" ]; then
             echo "Current shell is ZSH, skipping activation..."

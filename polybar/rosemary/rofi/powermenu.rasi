@@ -19,7 +19,7 @@ configuration {
 	sidebar-mode: 					false;
 }
 
-@import "colors.rasi"
+@import "shared/colors.rasi"
 
 window {
     transparency:                   "real";
@@ -28,7 +28,7 @@ window {
 	border:							2px;
 	border-color:					@ac;
     border-radius:                  0px;
-	width:							400px;
+	width:							300px;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
@@ -48,7 +48,7 @@ textbox-prompt-colon {
 	background-color: 				@al;
 	text-color: 					@ac;
 	expand: false;
-	str: "直";
+	str: "";
 }
 
 entry {
@@ -78,7 +78,7 @@ listview {
     background-color:               @al;
     padding:                        0px;
     columns:                        1;
-    lines:                          8;
+    lines:                          5;
     spacing:                        5px;
     cycle:                          true;
     dynamic:                        true;
@@ -100,7 +100,7 @@ element {
     text-color:                     @fg;
     orientation:                    horizontal;
     border-radius:                  0px;
-    padding:                        8px 8px 8px -10px;
+    padding:                        8px 8px 8px -16px;
 }
 
 element-icon {

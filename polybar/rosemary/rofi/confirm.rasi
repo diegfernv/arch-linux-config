@@ -1,15 +1,16 @@
 /* Confirm Dialog */
 
-@import "colors.rasi"
+@import                         "colors.rasi"
+@import                         "shared/fonts.rasi"
 
 * {
     background-color:       @bg;
     text-color:             @fg;
-	font:				 	"Iosevka Nerd Font 10";
+	font:				 	@font;
 }
 
 window {
-    width:      			320px;
+    width:      			225px;
     padding:    			25px;
     border:					1px;
     border-radius:          0px;

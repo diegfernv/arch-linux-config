@@ -1,0 +1,68 @@
+84684
+84685
+84686
+Passing the following arguments to Electron: --ozone-platform-hint=auto
+[[38;2;88;101;242marRPC[0m > [38;2;254;231;92mipc[0m] listening at /run/user/1000/discord-ipc-0
+[[38;2;88;101;242marRPC[0m > [38;2;235;69;158mwebsocket[0m] 6463 in use!
+[[38;2;88;101;242marRPC[0m > [38;2;235;69;158mwebsocket[0m] listening on 6464
+[[38;2;88;101;242marRPC[0m > [38;2;237;66;69mprocess[0m] started
+Passing the following arguments to Electron: --ozone-platform-hint=auto
+Vesktop is already running. Quitting...
+[2024-05-14 00:01:01] Startup - updater built May 13 2024 21:00:30
+[2024-05-14 00:01:01] Startup - Steam Client launched with: '/home/diego/.local/share/Steam/ubuntu12_32/steam'
+[2024-05-14 00:01:01] Opted in to client beta 'publicbeta_families' via beta file
+You are in the 'publicbeta_families' client beta.
+Looks like steam didn't shutdown cleanly, scheduling immediate update check
+[2024-05-14 00:01:01] Loading cached metrics from disk (/home/diego/.local/share/Steam/package/steam_client_metrics.bin)
+[2024-05-14 00:01:01] Using the following download hosts for Public, Realm steamglobal
+[2024-05-14 00:01:01] 1. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 1000, source = 'update_hosts_cached.vdf'
+[2024-05-14 00:01:01] 2. https://cdn.cloudflare.steamstatic.com, /client/, Realm 'steamglobal', weight was 1, source = 'update_hosts_cached.vdf'
+[2024-05-14 00:01:01] 3. https://cdn.steamstatic.com, /client/, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2024-05-14 00:01:01] Checking for update on startup
+[2024-05-14 00:01:01] Checking for available updates...
+[2024-05-14 00:01:01] Downloading manifest: https://client-update.akamai.steamstatic.com/steam_client_publicbeta_families_ubuntu12
+[2024-05-14 00:01:01] Manifest download: send request
+[2024-05-14 00:01:01] Manifest download: waiting for download to finish
+[2024-05-14 00:01:01] Manifest download: finished
+[2024-05-14 00:01:01] Download skipped: /steam_client_publicbeta_families_ubuntu12 version 1715635533, installed version 1715635533, existing pending version 0
+[2024-05-14 00:01:01] Nothing to do
+[2024-05-14 00:01:01] Verifying installation...
+[2024-05-14 00:01:01] Performing checksum verification of executable files
+[2024-05-14 00:01:02] Verification complete
+UpdateUI: skip show logo
+Steam logging initialized: directory: /home/diego/.local/share/Steam/logs
+
+XRRGetOutputInfo Workaround: initialized with override: 0 real: 0xee230dc0
+XRRGetCrtcInfo Workaround: initialized with override: 0 real: 0xee22f500
+bus_name=com.steampowered.PressureVessel.LaunchAlongsideSteam
+Passing the following arguments to Electron: --ozone-platform-hint=auto
+[[38;2;88;101;242marRPC[0m > [38;2;254;231;92mipc[0m] listening at /run/user/1000/discord-ipc-0
+[[38;2;88;101;242marRPC[0m > [38;2;235;69;158mwebsocket[0m] 6463 in use!
+[[38;2;88;101;242marRPC[0m > [38;2;235;69;158mwebsocket[0m] listening on 6464
+[[38;2;88;101;242marRPC[0m > [38;2;237;66;69mprocess[0m] started
+[2024-05-14 20:55:22] Startup - updater built May 13 2024 21:00:30
+[2024-05-14 20:55:22] Startup - Steam Client launched with: '/home/diego/.local/share/Steam/ubuntu12_32/steam'
+[2024-05-14 20:55:22] Opted in to client beta 'publicbeta_families' via beta file
+You are in the 'publicbeta_families' client beta.
+Looks like steam didn't shutdown cleanly, scheduling immediate update check
+[2024-05-14 20:55:23] Loading cached metrics from disk (/home/diego/.local/share/Steam/package/steam_client_metrics.bin)
+[2024-05-14 20:55:23] Using the following download hosts for Public, Realm steamglobal
+[2024-05-14 20:55:23] 1. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 1000, source = 'update_hosts_cached.vdf'
+[2024-05-14 20:55:23] 2. https://cdn.cloudflare.steamstatic.com, /client/, Realm 'steamglobal', weight was 1, source = 'update_hosts_cached.vdf'
+[2024-05-14 20:55:23] 3. https://cdn.steamstatic.com, /client/, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2024-05-14 20:55:23] Checking for update on startup
+[2024-05-14 20:55:23] Checking for available updates...
+[2024-05-14 20:55:23] Downloading manifest: https://client-update.akamai.steamstatic.com/steam_client_publicbeta_families_ubuntu12
+[2024-05-14 20:55:23] Manifest download: send request
+[2024-05-14 20:55:23] Manifest download: waiting for download to finish
+[2024-05-14 20:55:23] Manifest download: finished
+[2024-05-14 20:55:23] Download skipped: /steam_client_publicbeta_families_ubuntu12 version 1715635533, installed version 1715635533, existing pending version 0
+[2024-05-14 20:55:23] Nothing to do
+[2024-05-14 20:55:23] Verifying installation...
+[2024-05-14 20:55:23] Performing checksum verification of executable files
+[2024-05-14 20:55:24] Verification complete
+UpdateUI: skip show logo
+Steam logging initialized: directory: /home/diego/.local/share/Steam/logs
+
+XRRGetOutputInfo Workaround: initialized with override: 0 real: 0xebe62dc0
+XRRGetCrtcInfo Workaround: initialized with override: 0 real: 0xebe61500

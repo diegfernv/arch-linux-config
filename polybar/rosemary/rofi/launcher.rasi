@@ -6,10 +6,11 @@
  * User: Contributors
  * Copyright: *!
  */
+ 
+ @import "shared/colors.rasi"
+ @import "shared/fonts.rasi"
 
 configuration {
-  font: "Noto Sans 14";
-
   drun {
     display-name: "";
   }
@@ -27,8 +28,6 @@ configuration {
     action: "kb-cancel";
   }
 }
-
- @import "colors.rasi"
 
 * {
   border: 0;
@@ -55,13 +54,15 @@ inputbar {
 }
 
 entry {
+  font: @font-14;
   background-color: inherit;
   padding: 12px 3px;
 }
 
 prompt {
+  font: @font-14;
   background-color: inherit;
-  padding: 12px;
+  padding: 14px;
 }
 
 listview {
@@ -78,6 +79,7 @@ element-icon {
 }
 
 element-text {
+  font: @font-14;
   padding: 10px 0;
 }
 

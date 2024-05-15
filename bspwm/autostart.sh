@@ -7,25 +7,21 @@ function run {
   fi
 }
 
-#export GTK_THEME="/home/diego/.local/share/themes/vencord-theme.css"
+## General --------------------------------------------------------------------#
 
-#Find out your monitor name with xrandr or arandr (save and you get this line)
-#xrandr --output VGA-1 --primary --mode 1360x768 --pos 0x0 --rotate normal
-#xrandr --output DP2 --primary --mode 1920x1080 --rate 60.00 --output LVDS1 --off &
-#xrandr --output LVDS1 --mode 1366x768 --output DP3 --mode 1920x1080 --right-of LVDS1
-#xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
-#autorandr horizontal
+## Bspwm config directory
+BSPDIR="$HOME/.config/bspwm"
 
-autorandr -c && 
+## Polybar directory
+POLYBARDIR="$HOME/.config/polybar"
+STYLE="rosemary"
 
-if [[ $HOSTNAME == rosemary-desktop ]]; then
-	bspc monitor DP-0 -d 1 2 3 4 5
-	bspc monitor DP-2 -d 6 7 8 9 10
-	bspc monitor HDMI-0 -d 11
-else 
-	bspc monitor -d 1 2 3 4 5 6 7 8 9 10
-fi
-$HOME/.config/polybar/rosemary/launch.sh &
+## Export bspwm/dir dir to PATH
+export PATH="${PATH}:$BSPDIR/scripts"
+
+## Configurations -------------------------------------------------------------#
+
+## Keyboard Layout ##
 
 #change your keyboard if you need it
 #setxkbmap -layout be
@@ -34,40 +30,28 @@ keybLayout=$(setxkbmap -v | awk -F "+" '/symbols/ {print $2}')
 
 
 if [ $keybLayout = "be" ]; then
-  run sxhkd -c ~/.config/bspwm/sxhkd/sxhkdrc-azerty &
+  run sxhkd -c $BSPDIR/sxhkd/sxhkdrc-azerty &
 else
-  run sxhkd -c ~/.config/bspwm/sxhkd/sxhkdrc &
+  run sxhkd -c $BSPDIR/sxhkd/sxhkdrc &
 fi
-
-#Some ways to set your wallpaper besides variety or nitrogen
-feh --bg-scale ~/.config/bspwm/wallpaper/candy-09.jpg &
-#feh --bg-fill /usr/share/backgrounds/archlinux/arch-wallpaper.jpg &
-#wallpaper for other Arch based systems
-#feh --bg-fill /usr/share/archlinux-tweak-tool/data/wallpaper/wallpaper.png &
-#feh --randomize --bg-fill ~/Dropbox/Apps/Desktoppr/*
-
-picom --config $HOME/.config/bspwm/picom.conf &
 
 xsetroot -cursor_name left_ptr &
 
+## Startup programs ------------------------------------------------------------#
 
+#processes=("launch.sh" "picom" "dunst" "easyeffects" "conky" "nm-applet" "volumeicon" "polkit-gnome-authentication-agent-1")
+
+#for process in "${processes[@]}"; do
+#    killall -q "$process"
+#done
+
+$POLYBARDIR/$STYLE/launch.sh &
+picom --config $BSPDIR/picom.conf &
+dunst -config $BSPDIR/dunstrc &
 nohup flatpak run com.github.wwmm.easyeffects --gapplication-service &
-killall -q conky; conky -c $HOME/.config/bspwm/system-overview &
-dex $HOME/.config/autostart/arcolinux-welcome-app.desktop
+conky -c $BSPDIR/system-overview &
 run nm-applet &
-run pamac-tray &
-numlockx on &
-#blueberry-tray &
+#run pamac-tray &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-#/usr/lib/xfce4/notifyd/xfce4-notifyd &
 run volumeicon &
-#nitrogen --restore &
-#run caffeine &
-#run vivaldi-stable &
-#run firefox &
-#run thunar &
-#run dropbox &
-#run insync start &
-#run discord &
-#run spotify &
-#run atom &
+dex $HOME/.config/autostart/arcolinux-welcome-app.desktop
