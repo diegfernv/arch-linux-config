@@ -70,8 +70,7 @@ case $choice in
         read config
         case $config in
             [Yy]* )
-                nvim --headless -c "PlugInstall" -c "qa"
-                nvim --headless -c "CocInstall coc-clangd coc-json coc-tsserver coc-pyright" -c "qa"
+                nvim --headless -c "PackerSync" -c "qa" && nvim --headless -c "MasonUpdate" -c "qa"
                 ;;
             [Nn]* )
                 echo "Nothing More to do."
