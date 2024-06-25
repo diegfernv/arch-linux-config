@@ -1,0 +1,88 @@
+/*
+ * ROFI color theme
+ *
+ * Based on Something Found in the Internet
+ *
+ * User: Contributors
+ * Copyright: *!
+ */
+ 
+ @import "shared/colors.rasi"
+ @import "shared/fonts.rasi"
+
+configuration {
+  drun {
+    display-name: "";
+  }
+
+  run {
+    display-name: "";
+  }
+
+  window {
+    display-name: "";
+  }
+
+  timeout {
+    delay: 10;
+    action: "kb-cancel";
+  }
+}
+
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
+
+  background-color: @bg;
+  text-color: @fg;
+}
+
+window {
+  transparency: "real";
+  width: 900px;
+}
+
+mainbox {
+  children: [inputbar, listview];
+}
+
+inputbar {
+  background-color: @bg-alt;
+  children: [prompt, entry];
+}
+
+entry {
+  font: @font-14;
+  background-color: inherit;
+  padding: 12px 3px;
+}
+
+prompt {
+  font: @font-14;
+  background-color: inherit;
+  padding: 14px;
+}
+
+listview {
+  lines: 8;
+}
+
+element {
+  children: [element-icon, element-text];
+}
+
+element-icon {
+  padding: 10px 10px;
+  size: 24px;
+}
+
+element-text {
+  font: @font-14;
+  padding: 10px 0;
+}
+
+element-text selected {
+  text-color: @ac;
+}

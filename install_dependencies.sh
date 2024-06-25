@@ -24,6 +24,7 @@ Furthermore you need to install the following packages:
     - ttf-nerd-fonts-symbols (Pacman)
     - conky-lua-archers (Pacman)
     - flatpak (pacman)
+    - stow (pacman)
     - com.github.wwmm.easyeffects (Flatpak)
     - SDDM Arcolinux-sugar-candy
 
@@ -37,7 +38,7 @@ case $requirements in
         sudo pacman -S --needed arcolinux-sddm-sugar-candy-git autorandr brave-bin \
             brightnessctl ctags dunst fzf neovim rofi picom xclip ttf-jetbrains-mono \
             ttf-nerd-fonts-symbols conky-lua-archers \
-            flatpak numix-icon-theme-git maim oh-my-zsh-git slop viewnior xcolor zsh-autosuggestions-git \
+            flatpak numix-icon-theme-git maim npm oh-my-zsh-git slop stow viewnior xcolor zsh-autosuggestions-git \
             zsh-syntax-highlighting zsh-history-substring-search-git
         if [ -n "$ZSH_VERSION" ]; then
             echo "Current shell is ZSH, skipping activation..."
@@ -60,6 +61,8 @@ case $nvim_plug in
         if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]; then
             git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
         fi
+        stow neovim
+        nvim --headless -c "PackerSync" -c "qa" && nvim --headless -c "MasonUpdate" -c "qa"
         ;;
     [Nn]* )
         echo "Nothing more to do."
@@ -72,13 +75,13 @@ read p10k
 case $p10k in
     [Yy]* )
         sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+        stow p10k
         ;;
     [Nn]* )
         echo "Nothing more to do."
         ;;
     * ) echo "Do you want to install Powerlevel10k? [Y/N]:"
 esac
-
 
 echo "Do you want to configure GRUB? [Y/N]:"
 read grub

@@ -1,0 +1,7 @@
+--dir=./dotfiles
+--target=~
+--verbose
+IGNORE=README.md
+
+[sddm]
+--target=/

@@ -1,4 +1,7 @@
-!#/bin/bash
+#!/bin/bash
+echo "DEPRECATED SCRIPT"
+exit 0
+
 declare -a paths=( 
     ".config/bspwm/." "bspwm/." 
     ".config/autorandr/." "autorandr/." 

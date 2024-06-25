@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+BSPWM="$HOME/.config/bspwm"
+RASI="$BSPWM/scripts/rofi/launcher.rasi"
+
+rofi_cmd() {
+	rofi -no-config \
+        -no-lazy-grab \
+        -show drun \
+        -modi drun \
+        -theme $RASI
+}
+
+rofi_cmd
