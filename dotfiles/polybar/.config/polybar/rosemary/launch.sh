@@ -15,6 +15,5 @@ if [[ $HOSTNAME == rosemary-desktop ]]; then
     polybar -q primary-screen -c "$DIR"/config.ini &
     polybar -q secondary-screen -c "$DIR"/config.ini &
 else
-    polybar -q default-top -c "$DIR"/config.ini &
-    polybar -q default-bottom -c "$DIR"/config.ini &
+    polybar -q default -c "$DIR"/config.ini &
 fi

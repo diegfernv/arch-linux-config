@@ -33,6 +33,7 @@ return require('packer').startup(function(use)
         'neovim/nvim-lspconfig',
     }                                     -- Language server protocol
     use 'nvim-treesitter/nvim-treesitter' -- Syntax highlighting
+    use 'github/copilot.vim' -- Copilot
     if packer_bootstrap then
     require('packer').sync()
     end

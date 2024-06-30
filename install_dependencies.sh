@@ -22,6 +22,7 @@ Furthermore you need to install the following packages:
     - zsh-syntax-highlighting (Pacman)
     - ttf-jetbrains-mono (Pacman)
     - ttf-nerd-fonts-symbols (Pacman)
+    - ttf-hack-nerd (Pacman)
     - conky-lua-archers (Pacman)
     - flatpak (pacman)
     - stow (pacman)
@@ -37,7 +38,7 @@ case $requirements in
         echo "Installing Pacman packages"
         sudo pacman -S --needed arcolinux-sddm-sugar-candy-git autorandr brave-bin \
             brightnessctl ctags dunst fzf neovim rofi picom xclip ttf-jetbrains-mono \
-            ttf-nerd-fonts-symbols conky-lua-archers \
+            ttf-nerd-fonts-symbols ttf-hack-nerd conky-lua-archers \
             flatpak numix-icon-theme-git maim npm oh-my-zsh-git slop stow viewnior xcolor zsh-autosuggestions-git \
             zsh-syntax-highlighting zsh-history-substring-search-git
         if [ -n "$ZSH_VERSION" ]; then
