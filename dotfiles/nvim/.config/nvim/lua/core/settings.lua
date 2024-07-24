@@ -26,3 +26,6 @@ set.smarttab = true
 set.number = true
 set.relativenumber = true
 set.scrolloff=8
+
+-- Python
+vim.g.python3_host_prog = '~/miniconda3/envs/nvim/bin/python'

@@ -32,8 +32,24 @@ return require('packer').startup(function(use)
         'williamboman/mason-lspconfig.nvim',
         'neovim/nvim-lspconfig',
     }                                     -- Language server protocol
-    use 'nvim-treesitter/nvim-treesitter' -- Syntax highlighting
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+    } -- Syntax highlighting
     use 'github/copilot.vim' -- Copilot
+    use 'andweeb/presence.nvim' -- Discord Rich Presence
+    use 'jmbuhr/otter.nvim' -- Otter
+    use {
+        'benlubas/molten-nvim',
+        '3rd/image.nvim',
+        build = ":UpdateRemotePlugins"
+    } -- Jupyter Notebook
+    use 'quarto-dev/quarto-nvim' -- Quarto (Dep on Otter)
+    use 'GCBallesteros/jupytext.nvim' -- Jupyter Notebook
+
     if packer_bootstrap then
     require('packer').sync()
     end

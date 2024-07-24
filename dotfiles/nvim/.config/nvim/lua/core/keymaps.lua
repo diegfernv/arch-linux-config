@@ -7,10 +7,10 @@ vim.g.maplocalleader = ' '
 map('n', '<c-q>', ':q<CR>', {})
 map('n', '<c-w>', ':w<CR>', {})
 
-map('n', '<C-K>', ':wincmd k<CR>', { silent = true })
-map('n', '<C-J>', ':wincmd j<CR>', { silent = true })
-map('n', '<C-H>', ':wincmd h<CR>', { silent = true })
-map('n', '<C-L>', ':wincmd l<CR>', { silent = true })
+map('n', '<C-K>', ':wincmd k<CR>', opts)
+map('n', '<C-J>', ':wincmd j<CR>', opts)
+map('n', '<C-H>', ':wincmd h<CR>', opts)
+map('n', '<C-L>', ':wincmd l<CR>', opts)
 
 
 map('n', '<C-e>', ':NvimTreeFindFile<CR>', {})
@@ -40,9 +40,19 @@ map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
 map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
 
 -- Sort automatically by...
-map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
-map('n', '<Space>bn', '<Cmd>BufferOrderByName<CR>', opts)
-map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
-map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
-map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
+map('n', '<localleader>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
+map('n', '<localleader>bn', '<Cmd>BufferOrderByName<CR>', opts)
+map('n', '<localleader>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
+map('n', '<localleader>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
+map('n', '<localleader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
 
+-- Quarto
+map('n', '<localleader>qa', "<Cmd>QuartoActivate<CR>", opts)
+map('n', '<localleader>rc', "<Cmd>QuartoSend<CR>", opts)
+map('n', '<localleader>ra', "<Cmd>QuartoSendAbove<CR>", opts)
+map('n', '<localleader>rb', "<Cmd>QuartoSendBellow<CR>", opts)
+map('n', '<localleader>rA', "<Cmd>QuartoSendAll<CR>", opts)
+map('n', '<localleader>rl', "<Cmd>QuartoSendLine<CR>", opts)
+
+
+map('n', '<C-Enter>', "<Cmd>QuartoSend<CR>", opts)
