@@ -56,3 +56,7 @@ map('n', '<localleader>rl', "<Cmd>QuartoSendLine<CR>", opts)
 
 
 map('n', '<C-Enter>', "<Cmd>QuartoSend<CR>", opts)
+
+
+-- Terminal
+map('n', '<localleader>tt', "<Cmd>ToggleTerm size=10 direction=horizontal name=terminal<CR>", opts)

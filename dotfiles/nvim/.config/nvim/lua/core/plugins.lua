@@ -39,6 +39,9 @@ return require('packer').startup(function(use)
             ts_update()
         end,
     } -- Syntax highlighting
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+        require("toggleterm").setup()
+    end} -- Terminal
     use 'github/copilot.vim' -- Copilot
     use 'andweeb/presence.nvim' -- Discord Rich Presence
     use 'jmbuhr/otter.nvim' -- Otter

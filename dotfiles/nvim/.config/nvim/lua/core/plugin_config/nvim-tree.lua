@@ -69,6 +69,12 @@ require("nvim-tree").setup{
     open_on_tab = false,
     renderer = {
         highlight_opened_files = "all"
-    }
+    },
+    filters = {
+        dotfiles = false,
+        git_ignored = false,
+        custom = {"__pycache__", ".ipynb_checkpoints"}
+    },
+
 }
 
