@@ -1,0 +1,9 @@
+/* Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com> */
+
+/* Text Font */
+
+* {
+    font: "Iosevka Nerd Font 10";
+    font-14: "Noto Sans 14";
+    font-title: "FontAwesome 28";
+}

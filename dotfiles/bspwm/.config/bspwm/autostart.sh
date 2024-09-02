@@ -16,6 +16,9 @@ BSPDIR="$HOME/.config/bspwm"
 POLYBARDIR="$HOME/.config/polybar"
 STYLE="rosemary"
 
+## Dunst config directory
+DUNSTDIR="$HOME/.config/dunst"
+
 ## Export bspwm/dir dir to PATH
 export PATH="${PATH}:$BSPDIR/scripts"
 
@@ -47,7 +50,7 @@ xsetroot -cursor_name left_ptr &
 
 $POLYBARDIR/$STYLE/launch.sh &
 picom --config $BSPDIR/picom.conf &
-dunst -config $BSPDIR/dunstrc &
+dunst -config $DUNSTDIR/dunstrc &
 nohup flatpak run com.github.wwmm.easyeffects --gapplication-service &
 conky -c $BSPDIR/system-overview &
 run nm-applet &

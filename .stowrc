@@ -2,6 +2,3 @@
 --target=~
 --verbose
 IGNORE=README.md
-
-[sddm]
---target=/
