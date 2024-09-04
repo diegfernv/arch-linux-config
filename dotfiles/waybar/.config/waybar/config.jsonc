@@ -14,13 +14,9 @@
     ],
     "modules-right": [
         "wireplumber",
-        "custom/spotify",
         "power-profiles-daemon",
-        "keyboard-state",
-        "sway/language",
+        "network",
         "clock",
-        "tray",
-        "custom/power"
     ],
     "hyprland/workspaces": {
         "active-only": true,
@@ -84,7 +80,7 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
+        //"icon-size": 14,
         "spacing": 10
     },
     "clock": {
@@ -130,25 +126,14 @@
     "battery#bat2": {
         "bat": "BAT2"
     },
-    "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
-    },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-wifi": "",
+        "format-ethernet": "󰈁",
+        "tooltip-format": "{ifname} via {ipaddr}",
+
+        "format-linked": "{ifname} (No IP) 󰈁",
+        "format-disconnected": "󰈂",
     },
     "custom/media": {
         "format": "{icon} {}",

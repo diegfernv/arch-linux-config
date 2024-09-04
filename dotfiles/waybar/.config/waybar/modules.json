@@ -1,0 +1,24 @@
+{
+    "hyprland/workspaces": {
+        "active-only": true,
+        "format": "{icon}  {windows}",
+        "format-window-separator": " ",
+        "window-rewrite-default": "",
+        "on-click": "activate",
+        "persistent-workspaces": {
+            "DP-1": [ 1, 2, 3, 4, 5],
+            "DP-2": [ 6, 7, 8, 9, 10]
+        },
+        "window-rewrite": {
+            "title<.*youtube.*>": "", // Windows whose titles contain "youtube"
+            "class<brave> title<.*github.*>": "", 
+            "class<vesktop>": "",
+            "class<discord>": "",
+            "code": "󰨞",
+            "class<alacritty> title<.*nvim.*>": "󰨞",
+            "class<alacritty>": "",
+            "class<spotify>": "",
+        },
+        "sort-by-number": true
+    },
+}
