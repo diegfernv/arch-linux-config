@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
 
-## Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
+RASI="./styles/windows.rasi"
 
-# Import Current Theme
-BSPWM="$HOME/.config/bspwm"
-RASI="$BSPWM/scripts/rofi/windows.rasi"
-
-# Run
 rofi \
     -show window \
 	-theme ${RASI}

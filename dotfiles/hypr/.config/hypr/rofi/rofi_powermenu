@@ -11,8 +11,7 @@
 ## style-6   style-7   style-8   style-9   style-10
 
 # Current Theme
-BSPWM="$HOME/.config/bspwm"
-dir="$BSPWM/scripts/rofi"
+dir="~/.config/hypr/rofi/styles/"
 theme='powermenu-style-7'
 
 # CMDs

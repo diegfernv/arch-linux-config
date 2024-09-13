@@ -60,3 +60,6 @@ map('n', '<C-Enter>', "<Cmd>QuartoSend<CR>", opts)
 
 -- Terminal
 map('n', '<localleader>tt', "<Cmd>ToggleTerm size=10 direction=horizontal name=terminal<CR>", opts)
+
+-- Copilot
+map('n', '<localleader>cc', "<Plug>(copilot-suggest)", opts)

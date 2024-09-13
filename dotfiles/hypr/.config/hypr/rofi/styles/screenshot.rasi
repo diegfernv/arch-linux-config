@@ -15,7 +15,7 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "shared/colors.rasi"
+@import                          "shared/gruvbox.rasi"
 @import                          "shared/fonts.rasi"
 
 /*
@@ -23,29 +23,29 @@ USE_ICON=NO
 */
 
 * {
-    border-colour:               var(ac);
-    handle-colour:               var(ac);
-    background-colour:           var(bg);
-    foreground-colour:           var(fg);
+    border-colour:               var(light-red);
+    handle-colour:               var(light-red);
+    background-colour:           var(dark0);
+    foreground-colour:           var(light0);
     alternate-background:        var(bg-alt);
-    normal-background:           var(bg);
-    normal-foreground:           var(fg);
-    urgent-background:           var(red);
-    urgent-foreground:           var(bg);
-    active-background:           var(green);
-    active-foreground:           var(bg);
-    selected-normal-background:  var(ac);
-    selected-normal-foreground:  var(bg);
-    selected-urgent-background:  var(green);
-    selected-urgent-foreground:  var(bg);
-    selected-active-background:  var(red);
-    selected-active-foreground:  var(bg);
-    alternate-normal-background: var(bg);
-    alternate-normal-foreground: var(fg);
-    alternate-urgent-background: var(red);
-    alternate-urgent-foreground: var(bg);
-    alternate-active-background: var(green);
-    alternate-active-foreground: var(bg);
+    normal-background:           var(dark0);
+    normal-foreground:           var(light0);
+    urgent-background:           var(dark-red);
+    urgent-foreground:           var(dark0);
+    active-background:           var(neutral-green);
+    active-foreground:           var(dark0);
+    selected-normal-background:  var(light-red);
+    selected-normal-foreground:  var(dark0);
+    selected-urgent-background:  var(neutral-green);
+    selected-urgent-foreground:  var(dark0);
+    selected-active-background:  var(dark-red);
+    selected-active-foreground:  var(dark0);
+    alternate-normal-background: var(dark0);
+    alternate-normal-foreground: var(light0);
+    alternate-urgent-background: var(dark-red);
+    alternate-urgent-foreground: var(dark0);
+    alternate-active-background: var(neutral-green);
+    alternate-active-foreground: var(dark0);
 }
 
 /*****----- Main Window -----*****/
@@ -207,7 +207,7 @@ element normal.active {
     text-color:                  var(active-foreground);
 }
 element selected.normal {
-    background-color:            var(ac);
+    background-color:            var(handle-colour);
     text-color:                  var(normal-background);
 }
 element selected.urgent {

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Import Current Theme
-BSPWM="$HOME/.config/bspwm"
-RASI="$BSPWM/scripts/rofi/screenshot.rasi"
+HYPR="$HOME/.config/hypr"
+RASI="./styles/screenshot.rasi"
 
 # Theme Elements
 prompt='Screenshot'
@@ -51,7 +51,7 @@ fi
 
 # notify and view screenshot
 notify_view() {
-	notify_cmd_shot="dunstify -u low -h string:x-dunst-stack-tag:obscreenshot -i $BSPWM/icons/picture.svg"
+	notify_cmd_shot="dunstify -u low -h string:x-dunst-stack-tag:obscreenshot -i $HYPR/icons/picture.svg"
 	${notify_cmd_shot} "Copied to clipboard."
 	paplay /usr/share/sounds/freedesktop/stereo/screen-capture.oga &>/dev/null &
 	viewnior ${dir}/"$file"
@@ -70,7 +70,7 @@ copy_shot () {
 # countdown
 countdown () {
 	for sec in `seq $1 -1 1`; do
-		dunstify -t 1000 -h string:x-dunst-stack-tag:screenshottimer -i $BSPWM/icons/timer.svg "Taking shot in : $sec"
+		dunstify -t 1000 -h string:x-dunst-stack-tag:screenshottimer -i $HYPR/icons/timer.svg "Taking shot in : $sec"
 		sleep 1
 	done
 }

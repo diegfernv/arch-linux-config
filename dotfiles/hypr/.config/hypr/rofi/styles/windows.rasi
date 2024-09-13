@@ -19,29 +19,29 @@ configuration {
 @import                          "shared/fonts.rasi"
 
 * {
-    border-colour:               var(ac);
-    handle-colour:               var(fg);
-    background-colour:           var(bg);
-    foreground-colour:           var(fg);
-    alternate-background:        var(bg-alt);
-    normal-background:           var(bg);
-    normal-foreground:           var(fg);
-    urgent-background:           var(green);
-    urgent-foreground:           var(bg);
-    active-background:           var(blue);
-    active-foreground:           var(bg);
-    selected-normal-background:  var(bg-alt);
-    selected-normal-foreground:  var(fg);
-    selected-urgent-background:  var(blue);
-    selected-urgent-foreground:  var(bg);
-    selected-active-background:  var(green);
-    selected-active-foreground:  var(bg);
-    alternate-normal-background: var(bg);
-    alternate-normal-foreground: var(fg);
-    alternate-urgent-background: var(green);
-    alternate-urgent-foreground: var(bg);
-    alternate-active-background: var(blue);
-    alternate-active-foreground: var(bg);
+    border-colour:               var(light-red);
+    handle-colour:               var(light0);
+    background-colour:           var(dark0);
+    foreground-colour:           var(light0);
+    alternate-background:        var(dark1);
+    normal-background:           var(dark0);
+    normal-foreground:           var(light0);
+    urgent-background:           var(light-green);
+    urgent-foreground:           var(dark0);
+    active-background:           var(neural-blue);
+    active-foreground:           var(dark0);
+    selected-normal-background:  var(dark1);
+    selected-normal-foreground:  var(light0);
+    selected-urgent-background:  var(neural-blue);
+    selected-urgent-foreground:  var(dark0);
+    selected-active-background:  var(light-green);
+    selected-active-foreground:  var(dark0);
+    alternate-normal-background: var(dark0);
+    alternate-normal-foreground: var(light0);
+    alternate-urgent-background: var(light-green);
+    alternate-urgent-foreground: var(dark0);
+    alternate-active-background: var(neural-blue);
+    alternate-active-foreground: var(dark0);
 }
 
 /*****----- Main Window -----*****/

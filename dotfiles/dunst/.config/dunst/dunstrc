@@ -1,6 +1,7 @@
 [global]
 # Which monitor should the notifications be displayed on.
 monitor = 1
+follow = none
 
 font = Iosevka Nerd Font 10
 
@@ -36,13 +37,19 @@ indicate_hidden = yes
 # If gap_size is greater than 0, this setting will be ignored.
 separator_height = 2
 
+corner_radius = 5
+
+min_icon_size = 32
+max_icon_size = 48
+
 # Size of gap to display between notifications - requires a compositor.
 # If value is greater than 0, separator_height will be ignored and a border
 # of size frame_width will be drawn around each notification instead.
 # Click events on gaps do not currently propagate to applications below.
 gap_size = 10
 
-separator_color = "#3C3836"
+#separator_color = "#3C3836"
+separator_color = auto
 
 # constant width of 300
 width = 300
@@ -60,6 +67,11 @@ offset = (10, 10)
 # Set to 0 to disable.
 frame_width = 2
 
+### Mouse actions
+mouse_left_click = open_url
+mouse_middle_click = close_all
+mouse_right_click = close_current
+
 [urgency_low]
 background = "#1E2021"
 foreground = "#F9F5D7"
@@ -74,6 +86,3 @@ frame_color = "#D8A626"
 background = "#1E2021"
 foreground = "#F9F5D7"
 frame_color = "#EA6962"
-
-[icon]
-size = 16
