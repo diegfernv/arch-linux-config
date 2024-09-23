@@ -1,0 +1,42 @@
+/* Background Selector Theme */
+
+/* General Window Appearance */
+window {
+    background:      #1e1e1e;  /* Dark background */
+    border:          2px;
+    border-color:    #458588;  /* Gruvbox-inspired accent color */
+    padding:         10px;
+    width:           50%;      /* Adjust the window width */
+    height:          60%;      /* Adjust the height to fit images */
+}
+
+/* List view where the images are displayed */
+listview {
+    fixed-height:  500px;      /* Adjust based on thumbnail size */
+    background:    #282828;    /* Gruvbox dark background */
+    border:        1px;
+    border-color:  #458588;    /* Gruvbox accent color */
+    padding:       5px;
+    spacing:       5px;       /* Spacing between items */
+}
+
+/* Element (image thumbnails) */
+element {
+    text-color:  #ebdbb2;       /* Text color */
+    background:  #3c3836;       /* Gruvbox dark background */
+    border:      1px;
+    border-color: #458588;      /* Gruvbox accent color */
+}
+
+/* Highlight for selected element */
+element selected {
+    background:  #458588;       /* Gruvbox blue color for the selected item */
+    text-color:  #1e1e1e;       /* Dark text for better contrast */
+}
+
+/* Scrollbar styling */
+scrollbar {
+    width:         4px;
+    handle-color:  #d79921;      /* Gruvbox yellow */
+    border-color:  #282828;
+}

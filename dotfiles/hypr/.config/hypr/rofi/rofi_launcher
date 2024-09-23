@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-RASI="~/.config/hypr/rofi/styles/launcher.rasi"
+RASI="$HOME/.config/hypr/rofi/styles/launcher.rasi"
 
 rofi_cmd() {
 	rofi -no-config \

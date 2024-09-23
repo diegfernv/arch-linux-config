@@ -1,5 +1,18 @@
 #!/bin/bash
 
+PKG_PACMAN=$(tr '\n' ' ' < pacman_packages | xargs)
+PKG_YAY=$(tr '\n' ' ' < yay_packages | xargs)
+
+# Install dependencies
+echo '[hypr] Installing dependencies...'
+
+if ! pacman -Q "$PKG_YAY" &> /dev/null; then
+    yay -S --needed $PKG_YAY
+fi
+if ! pacman -Q "$PKG_PACMAN" &> /dev/null; then
+    sudo pacman -S --needed $PKG_PACMAN
+fi
+
 # Install Hyprutils
 echo '[hypr] Installing Hyprutils...'
 mkdir .tmp
@@ -10,11 +23,6 @@ cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getc
 sudo cmake --install build
 cd ../..
 
-# Install dependencies
-echo '[hypr] Installing dependencies...'
-if ! pacman -Q hyprlang hyprcursor hyprwayland-scanner libdecor cliphist &>/dev/null; then
-  sudo pacman -S hyprlang hyprcursor hyprwayland-scanner libdecor cliphist
-fi
 # Install Aquamarine
 echo '[hypr] Installing Aquamarine...'
 git clone https://github.com/hyprwm/aquamarine --depth 1 .tmp/aquamarine

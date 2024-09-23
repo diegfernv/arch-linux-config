@@ -18,22 +18,18 @@ configuration {
 @import                          "shared/gruvbox.rasi"
 @import                          "shared/fonts.rasi"
 
-/*
-USE_ICON=NO
-*/
-
 * {
     border-colour:               var(light-red);
     handle-colour:               var(light-red);
     background-colour:           var(dark0);
     foreground-colour:           var(light0);
-    alternate-background:        var(bg-alt);
+    alternate-background:        var(dark1);
     normal-background:           var(dark0);
     normal-foreground:           var(light0);
     urgent-background:           var(dark-red);
     urgent-foreground:           var(dark0);
     active-background:           var(neutral-green);
-    active-foreground:           var(dark0);
+    active-foreground:           var(light0);
     selected-normal-background:  var(light-red);
     selected-normal-foreground:  var(dark0);
     selected-urgent-background:  var(neutral-green);

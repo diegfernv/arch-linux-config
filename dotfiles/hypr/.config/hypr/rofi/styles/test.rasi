@@ -1,0 +1,62 @@
+/* Background Selector Theme */
+
+/* General Window Appearance */
+window {
+    font: "Iosevka Nerd Font 30";
+    background:      #1e1e1e;  /* Dark background */
+    border:          2px;
+    border-color:    #458588;  /* Gruvbox-inspired accent color */
+    padding:         10px;
+    width:           60%;      /* Adjust the window width to fit more items */
+    height:          60%;      /* Adjust the height to fit the grid */
+}
+
+/* List view where the images are displayed */
+listview {
+    background:     #282828;   /* Gruvbox dark background */
+    border:         1px;
+    border-color:   #458588;   /* Gruvbox accent color */
+    padding:        0px;
+    spacing:        0px;       /* No spacing between items */
+    columns:        3;         /* Number of columns in the grid */
+    enabled:                     true;
+    lines:                       3;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    margin:                      0px;
+    border-radius:               0px;
+    text-color:                  #ffffff;
+    cursor:                      "default";
+}
+
+
+/* Element (image thumbnails) */
+element {
+    text-color:     #ebdbb2;       /* Text color */
+    background:     #3c3836;       /* Gruvbox dark background */
+    border:         1px;
+    border-color:   #458588;      /* Gruvbox accent color */
+    padding:        0px;         /* No padding */
+    margin:         0px;         /* No margin */
+    spacing:        0px;         /* No spacing */
+    min-height:     100px;       /* Height of the thumbnail boxes */
+    min-width:      100px;       /* Width of the thumbnail boxes */
+}
+
+/* Highlight for selected element */
+element selected {
+    background:     #458588;       /* Gruvbox blue color for the selected item */
+    text-color:     #1e1e1e;       /* Dark text for better contrast */
+}
+
+/* Scrollbar styling */
+scrollbar {
+    width:          4px;
+    handle-color:   #d79921;      /* Gruvbox yellow */
+    border-color:   #282828;
+}

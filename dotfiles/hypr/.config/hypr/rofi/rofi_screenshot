@@ -2,27 +2,18 @@
 
 # Import Current Theme
 HYPR="$HOME/.config/hypr"
-RASI="./styles/screenshot.rasi"
+RASI="$HOME/.config/hypr/rofi/styles/screenshot.rasi"
 
 # Theme Elements
 prompt='Screenshot'
 mesg="Directory :: `xdg-user-dir PICTURES`/Screenshots"
 
 # Options
-layout=`cat ${RASI} | grep 'USE_ICON' | cut -d'=' -f2`
-if [[ "$layout" == 'NO' ]]; then
-	option_1="󰍹 Capture Desktop"
-	option_2="󰆞 Capture Area"
-	option_3=" Capture Window"
-	option_4=" Capture in 5s"
-	option_5=" Capture in 10s"
-else
-	option_1="󰍹"
-	option_2="󰆞"
-	option_3=""
-	option_4=""
-	option_5=""
-fi
+option_1="󰍹\tCapture Desktop"
+option_2="󰆞\tCapture Area"
+option_3="\tCapture Window"
+option_4="\tCapture in 5s"
+option_5="\tCapture in 10s"
 
 # Rofi CMD
 rofi_cmd() {

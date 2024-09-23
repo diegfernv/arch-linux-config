@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# Directory where background images are stored
+background_dir="$HOME/.config/hypr/wallpaper"
+RASI="$HOME/.config/hypr/rofi/styles/test.rasi"
+
+# Temporary directory for thumbnails
+thumbnail_dir=$(mktemp -d)
+
+# Function to create thumbnail
+create_thumbnail() {
+    local image="$1"
+    local thumbnail="$2"
+    magick "$image" -resize 256x256\> "$thumbnail"
+}
+
+# List all images and create thumbnails
+mapfile -t images < <(ls "$background_dir"/*.{png,jpg,jpeg} 2> /dev/null)
+
+for image in "${images[@]}"; do
+    thumbnail="$thumbnail_dir/$(basename "$image")"
+    create_thumbnail "$image" "$thumbnail"
+    echo "$thumbnail"
+done | rofi -dmenu -i -p "Select Background:" -theme $RASI | while read -r selected_thumbnail; do
+    # Find the original image path corresponding to the selected thumbnail
+    for image in "${images[@]}"; do
+        if [[ "$selected_thumbnail" == "$thumbnail_dir/$(basename "$image")" ]]; then
+            # Set the selected image as background
+            #feh --bg-scale "$image"
+            break
+        fi
+    done
+done
+
+# Cleanup thumbnails
+rm -rf "$thumbnail_dir"

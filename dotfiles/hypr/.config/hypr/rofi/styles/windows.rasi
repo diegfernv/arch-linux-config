@@ -15,7 +15,7 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "shared/colors.rasi"
+@import                          "shared/gruvbox.rasi"
 @import                          "shared/fonts.rasi"
 
 * {
@@ -28,7 +28,7 @@ configuration {
     normal-foreground:           var(light0);
     urgent-background:           var(light-green);
     urgent-foreground:           var(dark0);
-    active-background:           var(neural-blue);
+    active-background:           var(dark3);
     active-foreground:           var(dark0);
     selected-normal-background:  var(dark1);
     selected-normal-foreground:  var(light0);
@@ -60,7 +60,7 @@ window {
     margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
-    border-radius:               0px;
+    border-radius:               10px;
     border-color:                @border-colour;
     cursor:                      "default";
     /* Backgroud Colors */
