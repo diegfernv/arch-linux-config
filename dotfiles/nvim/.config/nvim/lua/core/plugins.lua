@@ -44,7 +44,10 @@ return require('packer').startup(function(use)
     end} -- Terminal
     use 'github/copilot.vim' -- Copilot
     use 'nvim-lua/plenary.nvim' -- Copilot
-    use 'CopilotC-Nvim/CopilotChat.nvim' -- Copilot
+    use {
+        'CopilotC-Nvim/CopilotChat.nvim',
+        branch = 'main',
+    }                                           -- Copilot
     use 'andweeb/presence.nvim' -- Discord Rich Presence
     use 'jmbuhr/otter.nvim' -- Otter
     use {

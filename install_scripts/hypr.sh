@@ -48,9 +48,39 @@ sudo cmake --install ./build
 cd ../..
 
 # Add to list of sessions
-echo '[hypr] Adding to list of sessions...'
-sudo mkdir -p /usr/share/wayland-sessions/
-echo "[Desktop Entry] \nName=Hyprland \nComment=This session launches Hyprland \nExec=hyprland \nType=Application" | sudo tee /usr/share/wayland-sessions/hyprland.desktop
+echo '[hypr] Do you want to add Hyprland to the list of sessions? [Y/N]'
+read add_session
+case $add_session in
+    [Yy]* )
+        echo '[hypr] Adding to list of sessions...'
+        sudo mkdir -p /usr/share/wayland-sessions/
+        echo -e "[Desktop Entry]\nName=Hyprland\nComment=This session launches Hyprland\nExec=hyprland\nType=Application" | sudo tee /usr/share/wayland-sessions/hyprland.desktop
+        ;;
+    [Nn]* )
+        echo '[hypr] Skipping...'
+        ;;
+    * ) echo '[hypr] Do you want to add Hyprland to the list of sessions? [Y/N]' ;;
+esac
+
+# Nvidia fix
+echo '[hypr] Do you want to apply the Nvidia fix? [Y/N]'
+read nvidia_fix
+case $nvidia_fix in
+    [Yy]* )
+        echo '[hypr] Applying Nvidia fix...'
+        # Edit /etc/mkinitcpio.conf
+        sudo sed -i 's/^MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
+        # Create /etc/modprobe.d/nvidia.conf
+        echo 'options nvidia_drm modeset=1 fbdev=1' | sudo tee /etc/modprobe.d/nvidia.conf
+        # Regenerate initramfs
+        sudo mkinitcpio -P
+        echo '[hypr] Nvidia fix applied! Please reboot your system.'
+        ;;
+    [Nn]* )
+        echo '[hypr] Skipping...'
+        ;;
+    * ) echo '[hypr] Do you want to apply the Nvidia fix? [Y/N]' ;;
+esac
 
 # Cleanup
 echo '[hypr] Cleaning up...'
